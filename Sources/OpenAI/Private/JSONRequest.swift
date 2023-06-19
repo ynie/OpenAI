@@ -34,7 +34,10 @@ extension JSONRequest: URLRequestBuildable {
         }
         request.httpMethod = method
         if let body = body {
-            request.httpBody = try JSONEncoder().encode(body)
+            let data = try JSONEncoder().encode(body)
+//            let jsonString = String(data: data, encoding: .utf8)
+//            print(jsonString!)
+            request.httpBody = data
         }
         return request
     }
